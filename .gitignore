@@ -1,3 +1,6 @@
+# Common
+Makefile
+
 # Prerequisites
 *.d
 
@@ -30,3 +33,12 @@
 *.exe
 *.out
 *.app
+*_out
+
+# Qt
+*.pro.user
+*build*
+*moc*
+*.qtc_clangd
+.qmake.stash
+ui_*
