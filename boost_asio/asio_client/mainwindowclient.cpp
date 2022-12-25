@@ -13,6 +13,8 @@ MainWindowClient::MainWindowClient(QWidget *parent)
     connect(ui->pb_send, SIGNAL(clicked(bool)), this, SLOT(slt_pbSend()));
     connect(ui->pb_ConnectToServer, SIGNAL(clicked(bool)), this, SLOT(slt_initBoostClient()));
 
+    qt_thr = new ThreadWorker();
+
     ui->le_IP->setText(QString("127.0.0.1"));
     ui->le_PORT->setText(QString("12000"));
 
@@ -21,7 +23,10 @@ MainWindowClient::MainWindowClient(QWidget *parent)
 
 void MainWindowClient::slt_initBoostClient()
 {
-    try
+
+    //ThreadWorker qt_thr;
+    qt_thr->start();
+    /*try
     {
         boost::asio::io_context io_context;
 
@@ -49,16 +54,20 @@ void MainWindowClient::slt_initBoostClient()
     catch (std::exception& e)
     {
         ui->te_Log->append(QString(e.what()));
-    }
+    }*/
 }
 
 void MainWindowClient::slt_pbSend()
 {
+    qt_thr->SendMessage(ui->le_Send->text().toStdString().c_str());
     ui->te_Log->append(QString("Send!"));
 }
 
 MainWindowClient::~MainWindowClient()
 {
+    std::cout << "start ~MainWindowClient()" << std::endl;
+    delete qt_thr;
     delete ui;
+    std::cout << "end ~MainWindowClient()" << std::endl;
 }
 

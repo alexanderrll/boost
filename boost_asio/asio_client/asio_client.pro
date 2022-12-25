@@ -14,12 +14,14 @@ SOURCES += \
     main.cpp \
     mainwindowclient.cpp \
     chat_client.cpp \
-    ../common/chat_message.cpp
+    ../common/chat_message.cpp \
+    threadworker.cpp
 
 HEADERS += \
     mainwindowclient.h \
     chat_client.h \
-    ../common/chat_message.h
+    ../common/chat_message.h \
+    threadworker.h
 
 FORMS += \
     mainwindowclient.ui

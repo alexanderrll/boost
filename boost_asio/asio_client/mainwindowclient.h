@@ -3,7 +3,8 @@
 
 #include <QMainWindow>
 #include <boost/asio.hpp>
-#include <chat_client.h>
+#include "chat_client.h"
+#include "threadworker.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindowClient; }
@@ -22,7 +23,7 @@ private slots:
     void slt_initBoostClient();
 
 private:
-
+    ThreadWorker *qt_thr;
     Ui::MainWindowClient *ui;
 
 };
