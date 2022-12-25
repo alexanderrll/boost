@@ -25,21 +25,12 @@ void MainWindowServer::slt_InitServer()
         boost::asio::io_context io_context;
 
         std::list<chat_server> servers;
-        /*for (int i = 1; i < argc; ++i)
-        {
-            tcp::endpoint endpoint(tcp::v4(), std::atoi(argv[i]));
-            servers.emplace_back(io_context, endpoint);
-        }*/
 
         tcp::endpoint endpoint1(tcp::v4(), std::atoi(ui->le_IP->text().toStdString().c_str()));
         servers.emplace_back(io_context, endpoint1);
 
         tcp::endpoint endpoint2(tcp::v4(), std::atoi(ui->le_PORT->text().toStdString().c_str()));
         servers.emplace_back(io_context, endpoint2);
-        //std::cout << "io_context.run\n";
-
-        /*std::thread t([&io_context](){ io_context.run(); });
-        t.join();*/
 
         io_context.run();
         ui->te_Log->append(QString("Server is starting!"));

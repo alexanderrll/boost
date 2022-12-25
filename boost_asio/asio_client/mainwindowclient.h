@@ -23,6 +23,8 @@ private slots:
     void slt_initBoostClient();
 
 private:
+    QString IP;
+    QString PORT;
     ThreadWorker *qt_thr;
     Ui::MainWindowClient *ui;
 

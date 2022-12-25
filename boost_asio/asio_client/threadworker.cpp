@@ -1,6 +1,6 @@
 #include "threadworker.h"
 
-ThreadWorker::ThreadWorker()
+ThreadWorker::ThreadWorker(QString IP, QString PORT) : IP_(IP), PORT_(PORT)
 {
 
 }
@@ -21,7 +21,7 @@ void ThreadWorker::run()
         boost::asio::io_context io_context;
 
         ip::tcp::resolver resolver(io_context);
-        auto endpoints = resolver.resolve(std::string("127.0.0.1"), std::string("12000"));
+        auto endpoints = resolver.resolve(IP_.toStdString(), PORT_.toStdString());
         clnt = new chat_client(io_context, endpoints);
 
         std::thread t([&io_context](){ io_context.run(); });
