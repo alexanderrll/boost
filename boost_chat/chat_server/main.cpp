@@ -14,7 +14,6 @@ int main(int argc, char* argv[])
 
         //input\output OS
         boost::asio::io_context io_context;
-
         std::list<chat_server> servers;
         for (int i = 1; i < argc; ++i)
         {

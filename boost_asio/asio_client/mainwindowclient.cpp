@@ -45,7 +45,7 @@ void MainWindowClient::slt_initBoostClient()
     }
     catch (std::exception& e)
     {
-        ui->te_Log->append(e.what());
+        ui->te_Log->append(QString(e.what()));
     }
 }
 
