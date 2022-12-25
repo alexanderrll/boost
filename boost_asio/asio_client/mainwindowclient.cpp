@@ -13,6 +13,9 @@ MainWindowClient::MainWindowClient(QWidget *parent)
     connect(ui->pb_send, SIGNAL(clicked(bool)), this, SLOT(slt_pbSend()));
     connect(ui->pb_ConnectToServer, SIGNAL(clicked(bool)), this, SLOT(slt_initBoostClient()));
 
+    ui->le_IP->setText(QString("127.0.0.1"));
+    ui->le_PORT->setText(QString("12000"));
+
     ui->te_Log->setText(QString("Client Start"));
 }
 

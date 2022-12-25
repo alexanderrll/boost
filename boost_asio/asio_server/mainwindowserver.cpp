@@ -11,6 +11,9 @@ MainWindowServer::MainWindowServer(QWidget *parent)
     connect(ui->pb_Send, SIGNAL(clicked(bool)), this, SLOT(slt_pbSend()));
     connect(ui->pb_InitServer, SIGNAL(clicked()), this, SLOT(slt_InitServer()));
 
+    ui->le_IP->setText(QString("127.0.0.1"));
+    ui->le_PORT->setText(QString("12000"));
+
     ui->te_Log->setText(QString("Server Start"));
 }
 
@@ -34,6 +37,10 @@ void MainWindowServer::slt_InitServer()
         tcp::endpoint endpoint2(tcp::v4(), std::atoi(ui->le_PORT->text().toStdString().c_str()));
         servers.emplace_back(io_context, endpoint2);
         //std::cout << "io_context.run\n";
+
+        /*std::thread t([&io_context](){ io_context.run(); });
+        t.join();*/
+
         io_context.run();
         ui->te_Log->append(QString("Server is starting!"));
     }
