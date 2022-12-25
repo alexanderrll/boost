@@ -7,7 +7,7 @@ chat_session::chat_session(tcp::socket socket, chat_room& room) : socket_(std::m
 
 void chat_session::start()
 {
-    std::cerr << "chat_session::start\n";
+    std::cout << "server -> chat_session::start\n";
     room_.join(shared_from_this());
     do_read_header();
 }
@@ -18,7 +18,7 @@ void chat_session::deliver(const chat_message& msg)
     write_msgs_.push_back(msg);
     if (!write_in_progress)
     {
-        std::cerr << "chat_session::deliver - if (!write_in_progress)\n";
+        std::cout << "server -> chat_session::deliver - if (!write_in_progress)\n";
         do_write();
     }
 }
@@ -43,7 +43,7 @@ void chat_session::do_read_header()
 
 void chat_session::do_read_body()
 {
-    std::cerr << "chat_session::do_read_body\n";
+    std::cout << "server -> chat_session::do_read_body\n";
     auto self(shared_from_this());
     boost::asio::async_read(socket_,
                             boost::asio::buffer(read_msg_.body(), read_msg_.body_length()),
@@ -51,6 +51,7 @@ void chat_session::do_read_body()
     {
         if (!ec)
         {
+            //std::cout << read_msg_.data() << std::endl;
             room_.deliver(read_msg_);
             do_read_header();
         }
@@ -63,7 +64,7 @@ void chat_session::do_read_body()
 
 void chat_session::do_write()
 {
-    std::cerr << "chat_session::do_write\n";
+    std::cout << "server -> chat_session::do_write\n";
     auto self(shared_from_this());
     boost::asio::async_write(socket_,
                              boost::asio::buffer(write_msgs_.front().data(),
@@ -72,6 +73,7 @@ void chat_session::do_write()
     {
         if (!ec)
         {
+            std::cout << read_msg_.body() << std::endl;
             write_msgs_.pop_front();
             if (!write_msgs_.empty())
             {

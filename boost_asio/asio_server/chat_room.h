@@ -16,6 +16,9 @@ typedef std::deque<chat_message> chat_message_queue;
 class chat_room
 {
 public:
+
+    chat_room();
+
     void join(chat_participant_ptr participant);
 
     void leave(chat_participant_ptr participant);
