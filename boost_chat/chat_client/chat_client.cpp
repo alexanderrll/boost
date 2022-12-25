@@ -13,7 +13,7 @@ typedef std::deque<chat_message> chat_message_queue;
 
 chat_client::chat_client(boost::asio::io_context& io_context, const tcp::resolver::results_type& endpoints) : io_context_(io_context), socket_(io_context)
 {
-    std::cerr << "chat_client::chat_client\n";
+    std::cerr << "client -> chat_client::chat_client\n";
     do_connect(endpoints);
 }
 
@@ -34,7 +34,7 @@ void chat_client::write(const chat_message& msg)
 
 void chat_client::close()
 {
-    std::cerr << "chat_client::close\n";
+    std::cerr << "client -> chat_client::close\n";
     boost::asio::post(io_context_, [this]() { socket_.close(); });
 }
 
@@ -53,7 +53,7 @@ void chat_client::do_connect(const tcp::resolver::results_type& endpoints)
 
 void chat_client::do_read_header()
 {
-    std::cerr << "chat_client::do_read_header\n";
+    std::cerr << "client -> chat_client::do_read_header\n";
     boost::asio::async_read(socket_,
                             boost::asio::buffer(read_msg_.data(), chat_message::header_length),
                             [this](boost::system::error_code ec, std::size_t /*length*/)
@@ -71,7 +71,7 @@ void chat_client::do_read_header()
 
 void chat_client::do_read_body()
 {
-    std::cerr << "chat_client::do_read_body\n";
+    std::cerr << "client -> chat_client::do_read_body\n";
     boost::asio::async_read(socket_,
                             boost::asio::buffer(read_msg_.body(), read_msg_.body_length()),
                             [this](boost::system::error_code ec, std::size_t /*length*/)
@@ -91,7 +91,7 @@ void chat_client::do_read_body()
 
 void chat_client::do_write()
 {
-    std::cerr << "chat_client::do_write\n";
+    std::cerr << "client -> chat_client::do_write\n";
     boost::asio::async_write(socket_,
                              boost::asio::buffer(write_msgs_.front().data(),
                                                  write_msgs_.front().length()),
