@@ -7,15 +7,11 @@ ThreadWorker::ThreadWorker()
 
 void ThreadWorker::SendMessage(const char *line)
 {
-    //char *line[chat_message::max_body_length + 1];
-   // while (std::cin.getline(line, chat_message::max_body_length + 1))
-    //{
-        chat_message msg;
-        msg.body_length(std::strlen(line));
-        std::memcpy(msg.body(), line, msg.body_length());
-        msg.encode_header();
-        clnt->write(msg);
-    //}
+    chat_message msg;
+    msg.body_length(std::strlen(line));
+    std::memcpy(msg.body(), line, msg.body_length());
+    msg.encode_header();
+    clnt->write(msg);
 }
 
 void ThreadWorker::run()
@@ -30,19 +26,13 @@ void ThreadWorker::run()
 
         std::thread t([&io_context](){ io_context.run(); });
 
-        //io_context.run();
         std::cout << "ThreadWorker::run -> io_context.run()" << std::endl;
-
-        //ui->te_Log->append(QString("Connected"));
-
-
 
         t.join();
     }
     catch (std::exception& e)
     {
         std::cout << e.what() << std::endl;
-        //ui->te_Log->append(QString(e.what()));
     }
 }
 
