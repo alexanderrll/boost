@@ -41,9 +41,9 @@
        <widget class="QLineEdit" name="le_PORT"/>
       </item>
       <item>
-       <widget class="QPushButton" name="pb_InitServer">
+       <widget class="QPushButton" name="pb_Connect">
         <property name="text">
-         <string>InitServer</string>
+         <string>pb</string>
         </property>
        </widget>
       </item>

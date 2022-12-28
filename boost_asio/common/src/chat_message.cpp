@@ -45,7 +45,7 @@ std::size_t chat_message::body_length() const
 
 void chat_message::body_length(std::size_t new_length)
 {
-    //std::cout << "chat_message::body_length\n";
+    std::cout << "chat_message::body_length\n";
     body_length_ = new_length;
     if (body_length_ > max_body_length)
         body_length_ = max_body_length;
@@ -68,7 +68,7 @@ bool chat_message::decode_header()
 
 void chat_message::encode_header()
 {
-    //std::cout << "chat_message::encode_header()\n";
+    std::cout << "chat_message::encode_header()\n";
     char header[header_length + 1] = "";
     std::sprintf(header, "%4d", static_cast<int>(body_length_));
     std::memcpy(data_, header, header_length);

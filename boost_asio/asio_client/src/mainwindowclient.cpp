@@ -1,8 +1,6 @@
 #include "mainwindowclient.h"
 #include "ui_mainwindowclient.h"
 
-using namespace boost::asio;
-
 MainWindowClient::MainWindowClient(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindowClient)
@@ -10,9 +8,10 @@ MainWindowClient::MainWindowClient(QWidget *parent)
     ui->setupUi(this);
     ui->te_Log->setDisabled(true);
     QWidget::setWindowTitle(QString("Client"));
-    connect(ui->pb_send, SIGNAL(clicked(bool)), this, SLOT(slt_pbSend()));
-    connect(ui->pb_ConnectToServer, SIGNAL(clicked(bool)), this, SLOT(slt_initBoostClient()));
+    connect(ui->pb_Send, SIGNAL(clicked(bool)), this, SLOT(slt_pbSend()));
+    connect(ui->pb_Connect, SIGNAL(clicked(bool)), this, SLOT(slt_initBoostClient()));
 
+    ui->pb_Connect->setText(QString("Connect to server"));
     ui->le_IP->setText(QString("127.0.0.1"));
     ui->le_PORT->setText(QString("12000"));
 

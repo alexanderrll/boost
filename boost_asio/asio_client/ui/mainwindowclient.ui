@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>936</width>
-    <height>355</height>
+    <width>828</width>
+    <height>439</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -19,7 +19,7 @@
      <widget class="QTextEdit" name="te_Log"/>
     </item>
     <item>
-     <layout class="QHBoxLayout" name="horizontalLayout_2">
+     <layout class="QHBoxLayout" name="horizontalLayout">
       <item>
        <widget class="QLabel" name="label_2">
         <property name="text">
@@ -41,16 +41,16 @@
        <widget class="QLineEdit" name="le_PORT"/>
       </item>
       <item>
-       <widget class="QPushButton" name="pb_ConnectToServer">
+       <widget class="QPushButton" name="pb_Connect">
         <property name="text">
-         <string>Connect</string>
+         <string>pb</string>
         </property>
        </widget>
       </item>
      </layout>
     </item>
     <item>
-     <layout class="QHBoxLayout" name="horizontalLayout">
+     <layout class="QHBoxLayout" name="horizontalLayout_2">
       <item>
        <widget class="QLabel" name="label">
         <property name="text">
@@ -62,7 +62,7 @@
        <widget class="QLineEdit" name="le_Send"/>
       </item>
       <item>
-       <widget class="QPushButton" name="pb_send">
+       <widget class="QPushButton" name="pb_Send">
         <property name="text">
          <string>Send</string>
         </property>
@@ -77,7 +77,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>936</width>
+     <width>828</width>
      <height>23</height>
     </rect>
    </property>

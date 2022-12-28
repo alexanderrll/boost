@@ -9,8 +9,9 @@ MainWindowServer::MainWindowServer(QWidget *parent)
     ui->te_Log->setDisabled(true);
     QWidget::setWindowTitle(QString("Server"));
     connect(ui->pb_Send, SIGNAL(clicked(bool)), this, SLOT(slt_pbSend()));
-    connect(ui->pb_InitServer, SIGNAL(clicked()), this, SLOT(slt_InitServer()));
+    connect(ui->pb_Connect, SIGNAL(clicked()), this, SLOT(slt_InitServer()));
 
+    ui->pb_Connect->setText(QString("Init server"));
     ui->le_IP->setText(QString("127.0.0.1"));
     ui->le_PORT->setText(QString("12000"));
 
@@ -32,7 +33,9 @@ void MainWindowServer::slt_pbSend()
 
 MainWindowServer::~MainWindowServer()
 {
+    std::cout << "start ~MainWindowServer()" << std::endl;
     delete qt_thr;
     delete ui;
+    std::cout << "end ~MainWindowServer()" << std::endl;
 }
 

@@ -5,7 +5,7 @@
 #include <iostream>
 #include <thread>
 #include <boost/asio.hpp>
-#include "../common/chat_message.h"
+#include "chat_message.h"
 
 using boost::asio::ip::tcp;
 
