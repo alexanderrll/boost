@@ -1,17 +1,15 @@
 #include "threadworkerserver.h"
 
+using namespace boost::asio;
+
 ThreadWorkerServer::ThreadWorkerServer(QString IP, QString PORT) : IP_(IP), PORT_(PORT)
 {
 
-}
+    tcp::endpoint endpoint1(tcp::v4(), std::atoi(IP_.toStdString().c_str()));
+    servers.emplace_back(io_context, endpoint1);
 
-void ThreadWorkerServer::SendMessage(const char *line)
-{
-    chat_message msg;
-    msg.body_length(std::strlen(line));
-    std::memcpy(msg.body(), line, msg.body_length());
-    msg.encode_header();
-    clnt->write(msg);
+    tcp::endpoint endpoint2(tcp::v4(), std::atoi(PORT_.toStdString().c_str()));
+    servers.emplace_back(io_context, endpoint2);
 }
 
 void ThreadWorkerServer::run()
@@ -19,17 +17,9 @@ void ThreadWorkerServer::run()
     try
     {
         //input\output OS
-        boost::asio::io_context io_context;
-
-        std::list<chat_server> servers;
-
-        tcp::endpoint endpoint1(tcp::v4(), std::atoi(IP_.toStdString().c_str()));
-        servers.emplace_back(io_context, endpoint1);
-
-        tcp::endpoint endpoint2(tcp::v4(), std::atoi(PORT_.toStdString().c_str()));
-        servers.emplace_back(io_context, endpoint2);
-
+        std::cout << "ThreadWorkerServer::start run -> io_context.run()" << std::endl;
         io_context.run();
+        std::cout << "ThreadWorkerServer::start run -> io_context.run()" << std::endl;
     }
     catch (std::exception& e)
     {

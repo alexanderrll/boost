@@ -5,7 +5,7 @@
 #include <boost/asio.hpp>
 #include "chat_client.h"
 
-using namespace boost::asio;
+//using namespace boost::asio;
 
 class ThreadWorkerClient : public QThread
 {
@@ -18,9 +18,11 @@ public:
 private:
     QString IP_;
     QString PORT_;
-    io_context io_context_;
-    tcp::endpoint  endpoints_;
+    boost::asio::io_context io_context;
+    //io_context io_context;
     chat_client *clnt;
+    //io_context io_context;
+
 protected:
     void run();
 };
