@@ -1,16 +1,17 @@
 #include "mainwindowserver.h"
-#include "ui_mainwindowserver.h"
+#include "ui_mainwindow.h"
 
 MainWindowServer::MainWindowServer(QWidget *parent)
     : QMainWindow(parent)
-    , ui(new Ui::MainWindowServer)
+    , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
     ui->te_Log->setDisabled(true);
     QWidget::setWindowTitle(QString("Server"));
     connect(ui->pb_Send, SIGNAL(clicked(bool)), this, SLOT(slt_pbSend()));
-    connect(ui->pb_InitServer, SIGNAL(clicked()), this, SLOT(slt_InitServer()));
+    connect(ui->pb_Connect, SIGNAL(clicked()), this, SLOT(slt_InitServer()));
 
+    ui->pb_Connect->setText(QString("Init server"));
     ui->le_IP->setText(QString("127.0.0.1"));
     ui->le_PORT->setText(QString("12000"));
 

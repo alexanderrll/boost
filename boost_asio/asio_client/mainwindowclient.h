@@ -7,7 +7,7 @@
 #include "threadworkerclient.h"
 
 QT_BEGIN_NAMESPACE
-namespace Ui { class MainWindowClient; }
+namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
 
 class MainWindowClient : public QMainWindow
@@ -26,7 +26,7 @@ private:
     QString IP;
     QString PORT;
     ThreadWorkerClient *qt_thr;
-    Ui::MainWindowClient *ui;
+    Ui::MainWindow *ui;
 
 };
 #endif // MAINWINDOWCLIENT_H

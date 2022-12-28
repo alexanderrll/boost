@@ -7,7 +7,7 @@
 #include "threadworkerserver.h"
 
 QT_BEGIN_NAMESPACE
-namespace Ui { class MainWindowServer; }
+namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
 
 class MainWindowServer : public QMainWindow
@@ -26,6 +26,6 @@ private:
     QString IP;
     QString PORT;
     ThreadWorkerServer *qt_thr;
-    Ui::MainWindowServer *ui;
+    Ui::MainWindow *ui;
 };
 #endif // MAINWINDOWSERVER_H
