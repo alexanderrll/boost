@@ -1,8 +1,6 @@
 #include "mainwindowclient.h"
 #include "ui_mainwindow.h"
 
-using namespace boost::asio;
-
 MainWindowClient::MainWindowClient(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)

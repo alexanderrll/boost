@@ -33,7 +33,9 @@ void MainWindowServer::slt_pbSend()
 
 MainWindowServer::~MainWindowServer()
 {
+    std::cout << "start ~MainWindowServer()" << std::endl;
     delete qt_thr;
     delete ui;
+    std::cout << "end ~MainWindowServer()" << std::endl;
 }
 

@@ -25,6 +25,7 @@ void chat_session::deliver(const chat_message& msg)
 
 void chat_session::do_read_header()
 {
+    std::cout << "server -> chat_session::do_read_header\n";
     auto self(shared_from_this());
     boost::asio::async_read(socket_,
                             boost::asio::buffer(read_msg_.data(), chat_message::header_length),

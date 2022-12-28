@@ -5,6 +5,15 @@ ThreadWorkerServer::ThreadWorkerServer(QString IP, QString PORT) : IP_(IP), PORT
 
 }
 
+void ThreadWorkerServer::SendMessage(const char *line)
+{
+    chat_message msg;
+    msg.body_length(std::strlen(line));
+    std::memcpy(msg.body(), line, msg.body_length());
+    msg.encode_header();
+    clnt->write(msg);
+}
+
 void ThreadWorkerServer::run()
 {
     try
